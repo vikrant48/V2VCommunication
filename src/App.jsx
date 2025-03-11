@@ -1,6 +1,6 @@
 
 import './App.css'
-import V2VCommunication from './V2VCommunication'
+import V2VCommunication from './V2VCommunication.jsx'
 
 
 function App() {
