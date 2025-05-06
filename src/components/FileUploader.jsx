@@ -48,20 +48,16 @@ const FileUploader = ({ label, onUpload }) => {
 
     reader.onload = (event) => {
       const lines = event.target.result.trim().split('\n').slice(1);
-      const data = lines
-        .map((line) => {
-          const [vehicle_id, latitude, longitude, speed, eventGeneratedTime] = line.split(',');
-          return {
-            vehicle_id: vehicle_id.trim(),
-            lat: parseFloat(latitude),
-            lon: parseFloat(longitude),
-            speed: parseFloat(speed),
-            time: eventGeneratedTime.trim(),
-          };
-        })
-        .filter(
-          (item) => !isNaN(item.lat) && !isNaN(item.lon) && !isNaN(item.speed)
-        );
+      const data = lines.map((line) => {
+        const [vehicle_id, latitude, longitude, speed, eventGeneratedTime] = line.split(',');
+        return {
+          vehicle_id: vehicle_id.trim(),
+          lat: parseFloat(latitude),
+          lon: parseFloat(longitude),
+          speed: parseFloat(speed),
+          time: eventGeneratedTime.trim(),
+        };
+      });
 
       onUpload(data);
     };
@@ -78,4 +74,5 @@ const FileUploader = ({ label, onUpload }) => {
 };
 
 export default FileUploader;
+
 
